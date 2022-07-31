@@ -1,0 +1,138 @@
+[
+    {
+        "vehicle_type": "CAR",
+        "checkin_hour": 0,
+        "avg_count": 60
+    },
+    {
+        "vehicle_type": "CAR",
+        "checkin_hour": 1,
+        "avg_count": 6
+    },
+    {
+        "vehicle_type": "CAR",
+        "checkin_hour": 2,
+        "avg_count": 3
+    },
+    {
+        "vehicle_type": "CAR",
+        "checkin_hour": 3,
+        "avg_count": 60
+    },
+    {
+        "vehicle_type": "CAR",
+        "checkin_hour": 4,
+        "avg_count": 6
+    },
+    {
+        "vehicle_type": "CAR",
+        "checkin_hour": 5,
+        "avg_count": 3
+    },
+    {
+        "vehicle_type": "CAR",
+        "checkin_hour": 6,
+        "avg_count": 7
+    },
+    {
+        "vehicle_type": "CAR",
+        "checkin_hour": 7,
+        "avg_count": 37
+    },
+    {
+        "vehicle_type": "CAR",
+        "checkin_hour": 8,
+        "avg_count": 7
+    },
+    {
+        "vehicle_type": "CAR",
+        "checkin_hour": 9,
+        "avg_count": 37
+    },
+    {
+        "vehicle_type": "CAR",
+        "checkin_hour": 10,
+        "avg_count": 60
+    },
+    {
+        "vehicle_type": "CAR",
+        "checkin_hour": 11,
+        "avg_count": 6
+    },
+    {
+        "vehicle_type": "CAR",
+        "checkin_hour": 12,
+        "avg_count": 3
+    },
+    {
+        "vehicle_type": "CAR",
+        "checkin_hour": 13,
+        "avg_count": 60
+    },
+    {
+        "vehicle_type": "CAR",
+        "checkin_hour": 14,
+        "avg_count": 6
+    },
+    {
+        "vehicle_type": "CAR",
+        "checkin_hour": 15,
+        "avg_count": 3
+    },
+    {
+        "vehicle_type": "CAR",
+        "checkin_hour": 16,
+        "avg_count": 7
+    },
+    {
+        "vehicle_type": "CAR",
+        "checkin_hour": 17,
+        "avg_count": 92
+    },
+    {
+        "vehicle_type": "CAR",
+        "checkin_hour": 18,
+        "avg_count": 75
+    },
+    {
+        "vehicle_type": "BIKE",
+        "checkin_hour": 19,
+        "avg_count": 10
+    },
+    {
+        "vehicle_type": "BIKE",
+        "checkin_hour": 21,
+        "avg_count": 45
+    },
+    
+    {
+        "vehicle_type": "BIKE",
+        "checkin_hour": 22,
+        "avg_count": 40
+    },
+    {
+        "vehicle_type": "BIKE",
+        "checkin_hour": 23,
+        "avg_count": 58
+    },
+    {
+        "vehicle_type": "BIKE",
+        "checkin_hour": 0,
+        "avg_count": 59
+    },
+    {
+        "vehicle_type": "BIKE",
+        "checkin_hour": 8,
+        "avg_count": 19
+    },
+    {
+        "vehicle_type": "BIKE",
+        "checkin_hour": 9,
+        "avg_count": 31
+    },
+    {
+        "vehicle_type": "BIKE",
+        "checkin_hour": 7,
+        "avg_count": 2
+    }
+]

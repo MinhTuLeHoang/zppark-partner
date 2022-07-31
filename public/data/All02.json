@@ -1,0 +1,26 @@
+[
+    {
+        "parking_id": 0,
+        "date": "2022-07-27",
+        "vehicle": "CAR",
+        "earning": 3265
+    },
+    {
+        "parking_id": 0,
+        "date": "2022-07-27",
+        "vehicle": "BIKE",
+        "earning": 22620
+    },
+    {
+        "parking_id": 0,
+        "date": "2022-07-28",
+        "vehicle": "CAR",
+        "earning": 1020
+    },
+    {
+        "parking_id": 0,
+        "date": "2022-07-28",
+        "vehicle": "BIKE",
+        "earning": 6000
+    }
+]

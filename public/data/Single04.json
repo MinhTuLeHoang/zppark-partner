@@ -1,0 +1,86 @@
+[
+    {
+        "parking_id": 894,
+        "date": "2022-07-26",
+        "vehicle": "CAR",
+        "earning": 2210
+    },
+    {
+        "parking_id": 894,
+        "date": "2022-07-26",
+        "vehicle": "BIKE",
+        "earning": 19260
+    },
+    {
+        "parking_id": 894,
+        "date": "2022-07-27",
+        "vehicle": "CAR",
+        "earning": 5341
+    },
+    {
+        "parking_id": 894,
+        "date": "2022-07-27",
+        "vehicle": "BIKE",
+        "earning": 22620
+    },
+    {
+        "parking_id": 894,
+        "date": "2022-07-28",
+        "vehicle": "CAR",
+        "earning": 945
+    },
+    {
+        "parking_id": 894,
+        "date": "2022-07-28",
+        "vehicle": "BIKE",
+        "earning": 5700
+    },
+    {
+        "parking_id": 894,
+        "date": "2022-07-29",
+        "vehicle": "CAR",
+        "earning": 3000
+    },
+    {
+        "parking_id": 894,
+        "date": "2022-07-29",
+        "vehicle": "BIKE",
+        "earning": 5700
+    },
+    {
+        "parking_id": 894,
+        "date": "2022-07-30",
+        "vehicle": "CAR",
+        "earning": 3000
+    },
+    {
+        "parking_id": 894,
+        "date": "2022-07-30",
+        "vehicle": "BIKE",
+        "earning": 5700
+    },
+    {
+        "parking_id": 894,
+        "date": "2022-07-31",
+        "vehicle": "CAR",
+        "earning": 2210
+    },
+    {
+        "parking_id": 894,
+        "date": "2022-07-31",
+        "vehicle": "BIKE",
+        "earning": 19260
+    },
+    {
+        "parking_id": 894,
+        "date": "2022-08-01",
+        "vehicle": "CAR",
+        "earning": 2210
+    },
+    {
+        "parking_id": 894,
+        "date": "2022-08-01",
+        "vehicle": "BIKE",
+        "earning": 19260
+    }
+]

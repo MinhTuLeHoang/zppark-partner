@@ -1,0 +1,31 @@
+.container {
+    color: white;
+    background-color: black;
+    /* background-image: linear-gradient(225deg, #56424c 0%, #302050 33%, #161a3d 66%, #372150 100%); */
+    background-image: url(/star-pattern.svg);
+
+    /* height: 55vh; */
+    padding: 10px 10px;
+    padding-bottom: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.center {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+
+.textField {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2em;
+    margin-left: 15px;
+}

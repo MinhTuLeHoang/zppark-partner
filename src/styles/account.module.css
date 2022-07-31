@@ -1,0 +1,53 @@
+.container{
+    margin: 10px auto;
+    padding: 0;
+    padding-bottom: 30px;
+    min-height: 420px;
+    width: 90%;
+}
+
+.sayHi {
+    /* margin-bottom: 15px; */
+    margin-top: 23px;
+    text-decoration: underline;
+;}
+
+.searchBar {
+    width: 100%;
+    margin-top: 30px;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    margin-bottom: 20px;
+}
+
+.btnArea {
+    color: red;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+/* .warning {
+    display: relative;
+    visibility: hidden;
+} */
+
+.warning p {
+    color: red;
+    margin: auto 2px;
+    font-size: 0.9em;
+    height: fit-content;
+}
+
+.warning div div div {
+    padding: 0;
+}
+
+.warning div div {
+    padding-top: 9px;
+    padding-bottom: 9px;
+}

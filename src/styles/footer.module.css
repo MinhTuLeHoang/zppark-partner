@@ -1,0 +1,164 @@
+.container {
+    width: 100%;
+    padding-top: 1.8rem;
+    padding-bottom: 20px;
+    border-top: 1px solid #eaeaea;
+
+    background-color: black;
+    background-image: url(/star-pattern.svg);
+
+    color: white;
+    font-weight: bold;
+}
+
+.subdetail {
+    display: flex;
+    width: var(--align-width);
+    margin: 0 auto;
+    text-align: center;
+    justify-content: space-around;
+}
+
+.subdetail .block {
+    width: 30%;
+}
+
+.block .title {
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+
+.block .link {
+    margin-bottom: 10px;
+}
+
+.block a:hover {
+    color: white;
+}
+
+.block a {
+    font-size: 0.89em;
+    color: rgba(255, 255, 255, 0.512);
+}
+
+/* ----------------------- */
+
+.social {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.social a {
+    display: flex;
+    flex-direction: row;
+}
+
+.social a p {
+    margin-left: 8px;
+}
+
+.social .responsive {
+    display: none;
+}
+
+.social a:nth-child(1) {
+    margin-right: 8px;
+}
+
+.social a:nth-child(2) {
+    margin-right: 8px;
+}
+
+/* ----------------------- */
+
+.bottomdetail {
+    display: flex;
+    justify-content: space-between;
+    width: var(--align-width);
+    margin: 0 auto;
+    border-top: 1px solid;
+    margin-top: 20px;
+    padding-top: 20px;
+    font-size: 0.72em;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.bottomdetail div:nth-child(1) {
+    padding-left: 60px;
+}
+
+.bottomdetail div:nth-child(2) {
+    padding-right: 80px;
+    text-align: right;
+}
+
+.bottomdetail a {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.bottomdetail a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+/* ---------------- */
+/* -- RESPONSIVE -- */
+/* ---------------- */
+
+@media only screen and (max-width: 1000px) {
+    .largeIcon img {
+        width: 30px !important;
+        height: 30px !important;
+    }
+    .smallIcon img {
+        width: 40px !important;
+        height: 40px !important;
+    }
+    .bottomdetail div:nth-child(2) {
+        padding-right: 60px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .subdetail .block {
+        width: 32%;
+    }
+    .link {
+        margin-bottom: 15px !important;
+    }
+    .link.social {
+        flex-direction: column;
+        align-items: flex-start;
+        width: fit-content;
+        margin: 0 auto;
+        margin-bottom: 8px !important;
+    }
+    .link a {
+        margin-right: 0px !important;
+        margin-bottom: 8px;
+    }
+    .largeIcon {
+        padding-left: 5px;
+    }
+    .largeIcon img {
+        width: 25px !important;
+        height: 25px !important;
+    }
+    .smallIcon img {
+        width: 35px !important;
+        height: 35px !important;
+    }
+    .social .responsive {
+        display: block;
+    }
+
+    .bottomdetail {
+        margin-top: 0px;
+    }
+
+    .bottomdetail>div {
+        padding: 0 30px !important;
+    }
+}

@@ -1,0 +1,50 @@
+.container {
+    margin: 0 auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding: 25px 0;
+    border-radius: 15px;
+    width: 60%;
+    background-color: aquamarine;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #eeeeee;
+}
+
+.title {
+    margin: 10px;
+}
+
+.whiteBG div div:first-child {
+    width: 230px;
+    background-color: white;
+}
+
+.loginBtn button {
+    font-weight: bold;
+    width: 230px;
+    margin-top: 18px;
+}
+
+.whiteBG {
+    margin-top: 16px;
+}
+
+.forgot {
+    margin-top: 5px;
+}
+
+.forgot a {
+    color: gray;
+    font-size: 0.75em;
+    padding-left: 5px;
+}
+
+.forgot a:hover {
+    color: black;
+}
+
+.register {
+    color: blue;
+}

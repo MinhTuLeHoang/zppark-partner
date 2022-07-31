@@ -1,0 +1,9 @@
+.donutchart {
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+}
+
+.donutchart div:nth-child(1) {
+    margin-right: 20px;
+}

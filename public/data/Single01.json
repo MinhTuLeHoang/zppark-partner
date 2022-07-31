@@ -1,0 +1,38 @@
+[
+    {
+        "vehicle_type": "CAR",
+        "fee_type": "FIXED",
+        "turn_count": 283,
+        "hours_served": 137.5835
+    },
+    {
+        "vehicle_type": "BIKE",
+        "fee_type": "FIXED",
+        "turn_count": 313,
+        "hours_served": 619.9339
+    },
+    {
+        "vehicle_type": "CAR",
+        "fee_type": "HOURLY",
+        "turn_count": 112,
+        "hours_served": 93.5835
+    },
+    {
+        "vehicle_type": "BIKE",
+        "fee_type": "HOURLY",
+        "turn_count": 316,
+        "hours_served": 119.9339
+    },
+    {
+        "vehicle_type": "CAR",
+        "fee_type": "MONTHLY",
+        "turn_count": 112,
+        "hours_served": 93.5835
+    },
+    {
+        "vehicle_type": "BIKE",
+        "fee_type": "MONTHLY",
+        "turn_count": 316,
+        "hours_served": 119.9339
+    }
+]

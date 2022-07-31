@@ -1,0 +1,14 @@
+[
+    {
+        "vehicle_type": "CAR",
+        "fee_type": "FIXED",
+        "turn_count": 298,
+        "hours_served": 569.3834
+    },
+    {
+        "vehicle_type": "BIKE",
+        "fee_type": "FIXED",
+        "turn_count": 323,
+        "hours_served": 638.4507
+    }
+]
