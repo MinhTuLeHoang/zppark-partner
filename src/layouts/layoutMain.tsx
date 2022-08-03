@@ -2,6 +2,10 @@ import Footer from "components/footer";
 import NavBar from "components/navBar";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import React from "react";
+import { isTokenExpired } from "utilities/token";
+
+const guessPages = ["/", "/account/login", "/account/register", "/account/forgot"];
 
 
 interface LayoutMainProps {
@@ -10,6 +14,30 @@ interface LayoutMainProps {
 
 const LayoutMain = ({children}:LayoutMainProps) => {
     const router = useRouter();
+
+    const [isLogin, setIsLogin] = React.useState(false);
+    React.useEffect(()=>{
+        const mySession = localStorage.getItem("mySession");
+
+        if (mySession == null) {
+            let flag = true;
+            for (let i=0; i<guessPages.length; i++) {
+                if (router.pathname === guessPages[i]) {
+                    flag = false;
+                }
+            }
+            if (flag === true) {
+                router.push("/account/login");
+            }
+        }
+        if (isTokenExpired()) {
+            localStorage.removeItem("mySession");
+            setIsLogin(false);
+        }
+        else {
+            setIsLogin(true);
+        }
+    },[])
 
     let pageName;
     if (router.pathname === "/") pageName = "home";

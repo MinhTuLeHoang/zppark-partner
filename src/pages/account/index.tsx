@@ -7,17 +7,34 @@ import LayoutMain from "layouts/layoutMain";
 import Router, { useRouter } from "next/router";
 import React, { useState } from "react";
 import accountStyle from "styles/account.module.css";
+import { getEmail, getToken } from "utilities/token";
+import {SearchIcon} from "components/MyIcon";
 
+
+// export const getStaticProps = async () => {
+//     const token:any = getToken();
+//     const email:any = getEmail();
+
+//     return {
+//         props: {
+//             token:token, 
+//             email:email,
+//         },
+//     }
+// }
 
 const Account = () => {
     const router = useRouter();
-    const { userID } = router.query;
+
+    const [token, setToken] = useState("");
+    const [email, setEmail] = useState("");
 
     const [isDisable, setIsDisable] = useState(true);
     const [searchBarWidth, setSearchBarWidth] = useState("250px");
     const [_document, set_document] = React.useState<any>(null)
 
     const [parkingList, setParkingList] = React.useState<any>([]);
+    const [parkingListShow, setParkingListShow] = React.useState<any>([]);
     const [parkingID, setParkingID] = React.useState<any>("");
 
     const [caution, setCaution] = React.useState(false);
@@ -25,68 +42,41 @@ const Account = () => {
         setCaution(false);
     }
 
-    // const getParkingData = async () => {
-    //     const req = await fetch(`https://zppark.live/api/dashboard/parking?partner=${userID}`);
-    //     const newData = await req;
-    //     const temp = newData.json();
-
-    //     const result = await Promise.all(temp.map(async (item: any) => { }))
-
-    //     return newData.json();
-
-    //     // console.log(newData);
-    //     // console.log(newData.json());
-    //     // console.log(newData.json().then(data => {
-    //     //     let a = data.json();
-    //     //     console.log(a);
-    //     // }));
-
-
-    //     // if(newData.status == 200) return setParkingList(newData.json());
-    //     // else return setParkingList([]);
-    // }
 
     const getParkingData = async () => {
-        await axios.get(`https://zppark.live/api/dashboard/parking?partner=${userID}`)
+        // await axios.get(`https://zppark.live/api/dashboard/parking?partner=${userID}`)
+        await axios.get(`https://zppark.live/api/dashboard/parking`
+            , { headers: { 'Authorization': 'Bearer ' + token } }
+        )
             .then(function (response) {
                 // handle success
-                if(response.data.data.length == 0) setCaution(true);
+                if (response.data.data.length == 0) setCaution(true);
                 setParkingList(response.data.data);
-                console.log(response);
+                setParkingListShow(response.data.data);
             })
             .catch(function (error) {
                 // handle error
                 console.log(error);
             })
-            .then(function () {
-                // always executed
-            });
     }
-    // async function getChapters(parkingList) {
-    //     const chapters = await Promise.all(
-    //         books.map(async (item) => {
-    //             const url = item[1].url
-    //             const res = await fetch(url)
-    //             const json = await res.json()
-    //             return json
-    //         })
-    //     )
 
-    //     return chapters
-    // }
-
-    console.log(parkingList);
 
     React.useEffect(() => {
         set_document(document)
     }, [])
 
     React.useEffect(() => {
-        if (_document != null && userID != undefined) {
-            getParkingData();
-            // anotherFetch();
+        if (_document != null) {
+            setToken(getToken());
+            setEmail(getEmail());
         }
-    }, [_document, userID])
+    }, [_document])
+
+    React.useEffect(() => {
+        if(token != "" && token != null) {
+            getParkingData();
+        }
+    },[token])
 
 
     const searchBarFocus = () => {
@@ -97,6 +87,34 @@ const Account = () => {
         setSearchBarWidth("250px");
     }
 
+    const [searchValue, setSearchValue] = useState("");
+    const searchHandler = (event: any) => {
+        const target = event.target;
+        setSearchValue(target.value);
+        console.log(target.value);
+    }
+    const enterPressHandler = (event: any) => {
+        console.log(event.key);
+        if (event.key === "Enter") {
+            event.preventDefault();
+            (document.getElementById("lessionSearchBar") as HTMLInputElement).value = "";
+            setSearchValue("");
+            if (parkingListShow.length > 0) router.push('/compare?parkingID=' + parkingListShow[0].parking_id + '&userID=1');
+        }
+    }
+    React.useEffect(() => {
+        let arr = [];
+        for (let i = 0; i < parkingList.length; i++) {
+            const cond1 = parkingList[i].name.toLowerCase().includes(searchValue.toLowerCase());
+            const cond2 = parkingList[i].address.toLowerCase().includes(searchValue.toLowerCase());
+            if (cond1 || cond2) {
+                arr.push(parkingList[i]);
+            }
+        }
+        setParkingListShow(arr);
+    }, [searchValue])
+
+
     const selectionHandler: any = (keys: "all" | Set<React.Key>) => {
         if (keys === "all") {
             console.log("full");
@@ -106,45 +124,36 @@ const Account = () => {
             }
         }
         else if (keys.size === parkingList.length) {
-            console.log("full");
-            console.log(keys);
             if (isDisable) {
                 // setIsDisable(false);
                 setIsDisable(true);
             }
         }
         else if (keys.size === 1) {
-            console.log("only one parking log");
-            console.log(keys);
             if (isDisable) {
                 setIsDisable(false);
             }
 
             const tempParkingID = keys.values().next().value;
             setParkingID(tempParkingID);
-            // router.push(`/compare?userID=${userID}&parkingID=${parkingID}`);
         }
         else {
-            console.log("not supported")
-            console.log(keys.size);
             setIsDisable(true);
         }
     }
 
     const launchHandler = () => {
-        router.push(`/compare?userID=${userID}&parkingID=${parkingID}`);
+        router.push(`/compare?parkingID=${parkingID}`);
     }
-
-    const temp = 1;
 
     return (
         <LayoutMain>
             <div className={accountStyle.container}>
-                <h1 className={accountStyle.sayHi} >Welcome ID: {userID} !</h1>
+                <h1 className={accountStyle.sayHi} >Welcome {email} !</h1>
 
                 <div className={accountStyle.row} >
                     <div className={accountStyle.searchBar} >
-                        <Input clearable labelPlaceholder="Search for your parking lot" bordered width={searchBarWidth} contentRight={<Image src="/svg/searchIcon.svg" width={40} height={40} />} onFocus={searchBarFocus} onBlur={searchBarBlur} />
+                        <Input clearable labelPlaceholder="Search for your parking lot" bordered width={searchBarWidth} contentRight={<SearchIcon/>} onFocus={searchBarFocus} onBlur={searchBarBlur} onChange={searchHandler} id="lessionSearchBar" onKeyDown={enterPressHandler} />
                     </div>
 
                     <div className={accountStyle.btnArea}>
@@ -158,7 +167,7 @@ const Account = () => {
                                 </Card.Body>
                             </Card>
                         </div>
-                        <Button disabled={isDisable} onClick={launchHandler} >Launch</Button>
+                        <Button disabled={isDisable} onPress={launchHandler} >Launch</Button>
                     </div>
                 </div>
 
@@ -171,7 +180,6 @@ const Account = () => {
                         height: "auto",
                         minWidth: "100%",
                     }}
-                    id="listOfParkingLots"
                 >
                     <Table.Header>
                         <Table.Column>NAME</Table.Column>
@@ -181,7 +189,7 @@ const Account = () => {
 
                     <Table.Body>
                         {
-                            parkingList.map((item: any) => {
+                            parkingListShow.map((item: any) => {
                                 return (
                                     <Table.Row key={item.parking_id}>
                                         <Table.Cell>{item.name}</Table.Cell>
@@ -195,10 +203,14 @@ const Account = () => {
                 </Table>
 
                 <Modal closeButton open={caution} onClose={closeCautionHandler}>
-                    <Modal.Header style={{paddingTop: "8px", paddingBottom: "8px", color: "red"}}>
+                    <Modal.Header style={{ paddingTop: "0px", paddingBottom: "15px", color: "red" }}>
                         <h2 >Caution !</h2>
                     </Modal.Header>
-                    <Modal.Body style={{textAlign: "center", color: "gray", paddingBottom: "20px", paddingTop: "20px"}} >You haven't register any parkinglot yet, please contact zzpark CF team for supportion</Modal.Body>
+                    <Modal.Body style={{ textAlign: "center", color: "gray", paddingBottom: "20px", paddingTop: "20px", height: "150px", borderTop: "solid 2px lightGray" }}>
+                        <p style={{margin: "auto auto", textAlign:"center", lineHeight: "1.5em"}}>You haven&lsquo;t register any parkinglot yet, please contact&nbsp;
+                        <a href="mailto:zpprakCS@vng.com.vn" target="_blank" rel="noreferrer" className={accountStyle.aLink} >zzpark CS</a>
+                        &nbsp;team for support</p>
+                    </Modal.Body>
                 </Modal>
             </div>
         </LayoutMain>

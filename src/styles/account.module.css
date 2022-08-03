@@ -51,3 +51,11 @@
     padding-top: 9px;
     padding-bottom: 9px;
 }
+
+.aLink {
+    text-decoration: underline;
+}
+
+.aLink:hover {
+    font-weight: bold;
+}

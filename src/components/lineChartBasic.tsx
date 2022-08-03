@@ -3,7 +3,7 @@ import React from 'react';
 import { Card } from '@nextui-org/react';
 import { Form } from 'react-bootstrap';
 
-const LineChartBasic = ({ width, height, haveFilter, api, myID, apiData }: any) => {
+const LineChartBasic = ({ width, height, haveFilter, api, myID, apiData, setFilterCallBack }: any) => {
     let options = {
         series: [{
             name: "Session Duration",
@@ -68,7 +68,6 @@ const LineChartBasic = ({ width, height, haveFilter, api, myID, apiData }: any) 
     };
 
     options.chart.height = height;
-    // options.chart.width = width;
 
     const [_document, set_document] = React.useState<any>(null)
 
@@ -90,6 +89,12 @@ const LineChartBasic = ({ width, height, haveFilter, api, myID, apiData }: any) 
         }
     }, [_document, apiData])
 
+    const selectFilterHandler = (event:any) => {
+        console.log("change r nha")
+        console.log(event.target.value)
+        setFilterCallBack(event.target.value);
+    }
+
     return (
         <Card style={{ width: width, height: "max-content", marginTop: "0px", marginBottom: "15px" }}>
             <Card.Body>
@@ -101,10 +106,10 @@ const LineChartBasic = ({ width, height, haveFilter, api, myID, apiData }: any) 
                 <Card.Footer style={{ paddingTop: "0px", paddingBottom: "30px" }}>
                     <div style={{ display: "flex", flexDirection: "row", margin: "0 auto" }}>
                         <p style={{ margin: "auto 0", fontSize: "0.9em" }}>These data above are showed within</p>
-                        <Form.Select size="sm" style={{ width: "90px", height: "30px", borderRadius: "8px", marginLeft: "10px", paddingLeft: "8px", backgroundColor: "white" }} >
-                            <option value={1}>7 days</option>
-                            <option value={2}>2 weeks</option>
-                            <option value={3}>1 month</option>
+                        <Form.Select size="sm" style={{ width: "90px", height: "30px", borderRadius: "8px", marginLeft: "10px", paddingLeft: "8px", backgroundColor: "white" }} id={"filter" + myID} onChange={selectFilterHandler}>
+                            <option value={7} defaultChecked >7 days</option>
+                            <option value={14}>2 weeks</option>
+                            <option value={30}>1 month</option>
                         </Form.Select>
                     </div>
                 </Card.Footer>

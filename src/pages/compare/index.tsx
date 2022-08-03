@@ -15,27 +15,33 @@ import timeParkingAPI from "api/timeParkingAPI";
 import ScatterChart from "components/scatterChart";
 import { Button } from "@nextui-org/react";
 import Image from "next/image";
+import { getEmail, getToken } from "utilities/token";
+import { BackIcon } from "components/MyIcon";
 
-const Compare = ({ swapis }: any) => {
+const Compare = () => {
     const router = useRouter();
-    const { userID, parkingID } = router.query;
-    // console.log({ userID, parkingID })
+    const { parkingID } = router.query;
+
+    const [token, setToken] = React.useState("");
+    const [email, setEmail] = React.useState("");
 
     const [earningData, setEarningData] = React.useState(-1);
     const [vehicalPerHourData, setVehicalPerHourData] = React.useState(-1);
     const [turnAndHourData, setTurnAndHourData] = React.useState(-1);
     const [timeParkingData, setTimeParkingData] = React.useState(-1);
 
+    const [filter, setFilter] = React.useState(7);
     const fetchEarningData = async () => {
         // const req = await fetch(`https://zppark.live/api/dashboard/earning?period=7&partner=${userID}&parking=${parkingID}`);
         // const newData = await req.json();
 
         // return setEarningData(newData);
-        await axios.get(`https://zppark.live/api/dashboard/earning?period=7&partner=${userID}&parking=${parkingID}`)
+        await axios.get(`https://zppark.live/api/dashboard/earning?period=${filter}&parking=${parkingID}`
+            , { headers: { 'Authorization': 'Bearer ' + token } }
+        )
             .then(function (response) {
                 // handle success
                 setEarningData(response.data.data);
-                // console.log(response);
             })
             .catch(function (error) {
                 // handle error
@@ -50,11 +56,12 @@ const Compare = ({ swapis }: any) => {
         // const newData = await req.json();
 
         // return setVehicalPerHourData(newData);
-        await axios.get(`https://zppark.live/api/dashboard/vehicle/avgcountbyhour?parking=${parkingID}`)
+        await axios.get(`https://zppark.live/api/dashboard/vehicle/avgcountbyhour?parking=${parkingID}`
+            , { headers: { 'Authorization': 'Bearer ' + token } }
+        )
             .then(function (response) {
                 // handle success
                 setVehicalPerHourData(response.data.data);
-                // console.log(response);
             })
             .catch(function (error) {
                 // handle error
@@ -70,11 +77,12 @@ const Compare = ({ swapis }: any) => {
 
         // return setTurnAndHourData(newData);
 
-        await axios.get(`https://zppark.live/api/dashboard/vehicle/served?partner=${userID}&parking=${parkingID}`)
+        await axios.get(`https://zppark.live/api/dashboard/vehicle/served?parking=${parkingID}`
+            , { headers: { 'Authorization': 'Bearer ' + token } }
+        )
             .then(function (response) {
                 // handle success
                 setTurnAndHourData(response.data.data);
-                console.log(response);
             })
             .catch(function (error) {
                 // handle error
@@ -85,16 +93,12 @@ const Compare = ({ swapis }: any) => {
             });
     }
     const fetchTimeParkingData = async () => {
-        // const req = await fetch(`https://zppark.live/api/dashboard/vehicle/occupation?parking=${parkingID}`);
-        // const newData = await req.json();
-
-        // return setTimeParkingData(newData);
-
-        await axios.get(`https://zppark.live/api/dashboard/vehicle/occupation?parking=${parkingID}`)
+        await axios.get(`https://zppark.live/api/dashboard/vehicle/occupation?parking=${parkingID}`
+            , { headers: { 'Authorization': 'Bearer ' + token } }
+        )
             .then(function (response) {
                 // handle success
                 setTimeParkingData(response.data.data);
-                // console.log(response);
             })
             .catch(function (error) {
                 // handle error
@@ -106,30 +110,38 @@ const Compare = ({ swapis }: any) => {
     }
 
     React.useEffect(() => {
-        if(userID != undefined && parkingID != undefined) {
+        setToken(getToken());
+        setEmail(getEmail());
+        if (token != "" && token != null && parkingID != undefined) {
             fetchEarningData();
             fetchVehicalPerHourData();
             fetchTurnAndHourData();
             fetchTimeParkingData();
         }
-    }, [userID, parkingID])
+    }, [parkingID, token])
+
+    React.useEffect(() => {
+        if (token != "" && token != null && parkingID != undefined) {
+            fetchEarningData();
+        }
+    }, [filter])
 
     const backBtnHandler = () => {
-        router.push("/account?userID=" + userID);
+        router.push("/account");
     }
 
     return (
         <LayoutMain>
             <div className={compareStyle.container} >
-                <div style={{display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center"}}>
-                    <h1 className={accountStyle.sayHi} style={{ marginBottom: "30px" }}>Welcome ID: {userID} !</h1>
-                    <Button style={{paddingBottom: "2px", marginRight: "15px"}} auto icon={<div style={{height: "25px", width: "25px",margin: "auto auto", verticalAlign: "middle"}}><Image src="/svg/backIcon.svg" width={25} height={25} /></div>} onClick={backBtnHandler}/>
+                <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
+                    <h1 className={accountStyle.sayHi} style={{ marginBottom: "30px" }}>Welcome {email} !</h1>
+                    <Button style={{ paddingBottom: "2px", marginRight: "15px" }} auto icon={<div style={{ height: "25px", width: "25px", margin: "auto auto", verticalAlign: "middle" }}> <BackIcon/> </div>} onClick={backBtnHandler} />
                 </div>
 
 
                 <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", width: "100%" }}>
                     <div style={{ width: "53%" }}>
-                        <LineChart width="100%" height="200px" haveFilter api={earningEachTypeAPI} myID="linechart123" apiData={earningData} />
+                        <LineChart width="100%" height="200px" haveFilter api={earningEachTypeAPI} myID="linechart123" apiData={earningData} setFilterCallBack={setFilter} />
                         <LineChart width="100%" height="256px" api={vehicalPerHourAPI} myID="linechart456" apiData={vehicalPerHourData} />
                     </div>
 
@@ -142,17 +154,6 @@ const Compare = ({ swapis }: any) => {
                     <ScatterChart width="49%" height="300px" api={timeParkingAPI} myID="scatter2211" param="BIKE" apiData={timeParkingData} />
 
                 </div>
-
-
-                {/* 
-                <div style={{width: "100%"}}>
-                    <LineChart width="53%" height="230px" haveFilter api={earningEachTypeAPI} myID="linechart123" />
-                    <LineChart width="53%" height="230px" haveFilter api={vehicalPerHourAPI} myID="linechart456" />
-                    <DonutGrChart width="45%" height="200px" />
-                    <ScatterChart width="50%" height="400px" api={timeParkingAPI} myID="scatter645" param="CAR" />
-                    <ScatterChart width="50%" height="400px" api={timeParkingAPI} myID="scatter2211" param="BIKE" />
-                </div>
-                 */}
             </div>
         </LayoutMain>
     );

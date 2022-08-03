@@ -13,11 +13,12 @@ interface LineChartProps {
     myID: string,
     style?: React.CSSProperties,
     apiData?: any,
+    setFilterCallBack?: any,
 }
 
-const LineChart = ({width, height, haveFilter, api, myID, style, apiData}:LineChartProps) => {
+const LineChart = ({width, height, haveFilter, api, myID, style, apiData, setFilterCallBack}:LineChartProps) => {
     return (
-        <LineChartDynamic width={width} height={height} haveFilter={haveFilter} api={api} myID={myID} style={style} apiData={apiData} />
+        <LineChartDynamic width={width} height={height} haveFilter={haveFilter} api={api} myID={myID} style={style} apiData={apiData} setFilterCallBack={setFilterCallBack} />
     )
 }
 

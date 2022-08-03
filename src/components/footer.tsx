@@ -11,7 +11,7 @@ const Footer = () => {
                     <h3 className={footerStyle.title}>Some Pages</h3>
 
                     <div className={footerStyle.link}>
-                        <Link href="/">Account</Link>
+                        <Link href="/account/profile">Account</Link>
                     </div>
                     
                     <div className={footerStyle.link}>
@@ -56,7 +56,9 @@ const Footer = () => {
             </div>
 
             <div className={footerStyle.bottomdetail}>
-                <div className={footerStyle.text}>@ZPPark Partner</div>
+                <div>
+                    <a href="#" className={footerStyle.text}>@ZPPark Partner</a>
+                </div>
                 <div>
                     <a className={footerStyle.text}>Policies </a>
                     <span className={footerStyle.text}>and</span>
