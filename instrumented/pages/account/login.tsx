@@ -25,7 +25,7 @@ const Login = () => {
         const params = new URLSearchParams();
         params.append('email', email.value);
         params.append('password', password.value)
-        await axios.post(`https://zppark.live/api//partners/login`, params)
+        await axios.post(`http://34.92.88.6:8080/partners/login`, params)
             .then(function (response) {
                 // handle success
                 const mySession = {

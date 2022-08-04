@@ -32,11 +32,11 @@ const Compare = () => {
 
     const [filter, setFilter] = React.useState(7);
     const fetchEarningData = async () => {
-        // const req = await fetch(`https://zppark.live/api/dashboard/earning?period=7&partner=${userID}&parking=${parkingID}`);
+        // const req = await fetch(`http://34.92.88.6:8080/dashboard/earning?period=7&partner=${userID}&parking=${parkingID}`);
         // const newData = await req.json();
 
         // return setEarningData(newData);
-        await axios.get(`https://zppark.live/api/dashboard/earning?period=${filter}&parking=${parkingID}`
+        await axios.get(`http://34.92.88.6:8080/dashboard/earning?period=${filter}&parking=${parkingID}`
             , { headers: { 'Authorization': 'Bearer ' + token } }
         )
             .then(function (response) {
@@ -52,11 +52,11 @@ const Compare = () => {
             });
     };
     const fetchVehicalPerHourData = async () => {
-        // const req = await fetch(`https://zppark.live/api/dashboard/vehicle/avgcountbyhour?parking=${parkingID}`);
+        // const req = await fetch(`http://34.92.88.6:8080/dashboard/vehicle/avgcountbyhour?parking=${parkingID}`);
         // const newData = await req.json();
 
         // return setVehicalPerHourData(newData);
-        await axios.get(`https://zppark.live/api/dashboard/vehicle/avgcountbyhour?parking=${parkingID}`
+        await axios.get(`http://34.92.88.6:8080/dashboard/vehicle/avgcountbyhour?parking=${parkingID}`
             , { headers: { 'Authorization': 'Bearer ' + token } }
         )
             .then(function (response) {
@@ -72,12 +72,12 @@ const Compare = () => {
             });
     }
     const fetchTurnAndHourData = async () => {
-        // const req = await fetch(`https://zppark.live/api/dashboard/vehicle/served?partner=${userID}&parking=${parkingID}`);
+        // const req = await fetch(`http://34.92.88.6:8080/dashboard/vehicle/served?partner=${userID}&parking=${parkingID}`);
         // const newData = await req.json();
 
         // return setTurnAndHourData(newData);
 
-        await axios.get(`https://zppark.live/api/dashboard/vehicle/served?parking=${parkingID}`
+        await axios.get(`http://34.92.88.6:8080/dashboard/vehicle/served?parking=${parkingID}`
             , { headers: { 'Authorization': 'Bearer ' + token } }
         )
             .then(function (response) {
@@ -93,7 +93,7 @@ const Compare = () => {
             });
     }
     const fetchTimeParkingData = async () => {
-        await axios.get(`https://zppark.live/api/dashboard/vehicle/occupation?parking=${parkingID}`
+        await axios.get(`http://34.92.88.6:8080/dashboard/vehicle/occupation?parking=${parkingID}`
             , { headers: { 'Authorization': 'Bearer ' + token } }
         )
             .then(function (response) {
@@ -160,7 +160,7 @@ const Compare = () => {
 }
 
 // export const getStaticProps = async () => {
-//     const res = await fetch('https://zppark.live/api/dashboard/earning?period=7&partner=1&parking=894')
+//     const res = await fetch('http://34.92.88.6:8080/dashboard/earning?period=7&partner=1&parking=894')
 //     const swapis: any = await res.json()
 
 //     return {

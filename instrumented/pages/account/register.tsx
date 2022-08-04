@@ -28,7 +28,7 @@ const Register = () => {
     }
 
     const registerAPI = async () => {
-        await axios.post(`https://zppark.live/api/partners/registration`, {
+        await axios.post(`http://34.92.88.6:8080/partners/registration`, {
             "email": email.value,
             "password": password.value,
             "zlp_app_id": 2254
@@ -49,24 +49,6 @@ const Register = () => {
             setNotiMessage(error.response.data.message);
             setNotiStatus("ERROR");
         })
-
-        // await axios({
-        //     url: "https://zppark.live/api/partners/registration",
-        //     method: "POST",
-        //     data: {
-        //         "email": "khankhan123@gmail.com",
-        //         "password": "headingto",
-        //         "zlp_app_id": 123,
-        //         "zlp_create_order_key": "abc",
-        //         "zlp_callback_key": "xyz"
-        //     }
-        // }).then(function (response) {
-        //     // handle success
-        //     console.log(response);
-        // }).catch(function (error) {
-        //     // handle error
-        //     console.log(error);
-        // })
     }
 
     React.useEffect(() => {

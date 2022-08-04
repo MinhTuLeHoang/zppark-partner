@@ -44,7 +44,7 @@ const Profile = () => {
 
 
     const resetPass = async () => {
-        await axios.post(`https://zppark.live/api/partners/registration/reset-password`, {
+        await axios.post(`http://34.92.88.6:8080/partners/registration/reset-password`, {
             "email": email,
             "password": passInput.value,
         }

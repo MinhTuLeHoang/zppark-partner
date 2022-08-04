@@ -28,7 +28,7 @@ const Register = () => {
     }
 
     const registerAPI = async () => {
-        await axios.post(`https://zppark.live/api/partners/registration`, {
+        await axios.post(`http://34.92.88.6:8080/partners/registration`, {
             "email": email.value,
             "password": password.value,
             "zlp_app_id": 2254
@@ -51,7 +51,7 @@ const Register = () => {
         })
 
         // await axios({
-        //     url: "https://zppark.live/api/partners/registration",
+        //     url: "http://34.92.88.6:8080/partners/registration",
         //     method: "POST",
         //     data: {
         //         "email": "khankhan123@gmail.com",

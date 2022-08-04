@@ -44,8 +44,8 @@ const Account = () => {
 
 
     const getParkingData = async () => {
-        // await axios.get(`https://zppark.live/api/dashboard/parking?partner=${userID}`)
-        await axios.get(`https://zppark.live/api/dashboard/parking`
+        // await axios.get(`http://34.92.88.6:8080/dashboard/parking?partner=${userID}`)
+        await axios.get(`http://34.92.88.6:8080/dashboard/parking`
             , { headers: { 'Authorization': 'Bearer ' + token } }
         )
             .then(function (response) {
