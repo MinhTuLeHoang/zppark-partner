@@ -134,7 +134,7 @@ const Profile = () => {
                         <div className={profileStyle.tag}>
                             <div style={{ display: "flex", flexDirection: "row" }}>
                                 <div style={{ marginRight: "20px" }}>
-                                    <Image src="/images/zpPay.png" alt="ZaloPay logo" width="fit-content" height="60px" style={{ margin: 0 }} />
+                                    <Image src="/images/zpPay.png" width="fit-content" height="60px" style={{ margin: 0 }} />
                                 </div>
                                 <h3 style={{ height: "fit-content", margin: "auto 0px" }}>ZaloPay</h3>
                             </div>
@@ -144,7 +144,7 @@ const Profile = () => {
                         <div className={profileStyle.tag}>
                             <div style={{ display: "flex", flexDirection: "row" }}>
                                 <div style={{ marginRight: "20px" }}>
-                                    <Image src="/images/MoMo_Logo.png" alt="MoMo logo" width="fit-content" height="60px" style={{ margin: 0 }} />
+                                    <Image src="/images/MoMo_Logo.png" width="fit-content" height="60px" style={{ margin: 0 }} />
                                 </div>
                                 <h3 style={{ height: "fit-content", margin: "auto 0px" }}>MoMo</h3>
                             </div>
@@ -154,7 +154,7 @@ const Profile = () => {
                         <div className={profileStyle.tag}>
                             <div style={{ display: "flex", flexDirection: "row" }}>
                                 <div style={{ marginRight: "20px" }}>
-                                    <Image src="/images/vnPay.png" alt="vnPay Logo" width="fit-content" height="60px" style={{ margin: 0 }} />
+                                    <Image src="/images/vnPay.png" width="fit-content" height="60px" style={{ margin: 0 }} />
                                 </div>
                                 <h3 style={{ height: "fit-content", margin: "auto 0px" }}>VNPay</h3>
                             </div>

@@ -109,7 +109,7 @@ const Login = () => {
                         <Input color={helper.color} onChange={(e) => email.setValue(e.target.value)} clearable bordered placeholder="Input your Email Address" label="Email" type="email" helperText={helper.text} helperColor={helper.color} status={helper.color} />
                     </div>
 
-                    <div className={LoginStyle.whiteBG} id="passwordField">
+                    <div className={LoginStyle.whiteBG}>
                         <Input.Password onChange={(e) => password.setValue(e.target.value)} bordered placeholder="Input your Password" label="Password" type="password" />
                     </div>
 

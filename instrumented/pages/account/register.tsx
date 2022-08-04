@@ -110,7 +110,7 @@ const Register = () => {
     return (
         <LayoutMain>
             <div className={LoginStyle.container}>
-                <Image src="/images/logo.png" alt="ZPPark logo" width={150} height={150} />
+                <Image src="/images/logo.png" width={150} height={150} />
 
                 <h1 className={LoginStyle.title}>ZPPark Partner Register</h1>
 

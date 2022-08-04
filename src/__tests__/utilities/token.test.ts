@@ -1,4 +1,4 @@
-import { isTokenExpired, getToken } from "utilities/token";
+import { isTokenExpired, getToken, getEmail } from "utilities/token";
 
 const fakeLocalStorage = (function () {
     let store: any = {};
@@ -40,12 +40,18 @@ describe('Utilities Token testing', () => {
 
         const a = isTokenExpired();
         console.log(a);
-        expect(isTokenExpired()).toBe(false);
+        expect(isTokenExpired()).toBe(true);
     });
-
-    it('getToken in utilities', () => {
+    it('getToken in utilities (not found)', () => {
         const b = getToken();
         console.log(b);
+    })
+})
+
+describe('Utilities Email testing', () => {
+    it('getEmail in utilities (not found)', () => {
+        const c = getEmail();
+        console.log(c);
     })
 })
 
